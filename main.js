@@ -9,7 +9,7 @@ const createWindow = () => {
             preload: path.join(__dirname, 'preload.js'),
         },  
     })
-    ipcMain.handle('almoco', () => 'Comi ovo')
+    
     win.loadFile('index.html')
 }
 
