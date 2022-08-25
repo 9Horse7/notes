@@ -1,21 +1,31 @@
 const {app, BrowserWindow, ipcMain } = require('electron')
+const ElectronStore = require('electron-store')
 const path = require('path')
+let win
 
-const createWindow = () => {
-    const win = new BrowserWindow({
+async function createWindow () {
+    win = new BrowserWindow({
         width: 800,
         height: 600,
+        
         webPreferences: {
-            preload: path.join(__dirname, 'preload.js'),
+            
+            preload: path.join(`${__dirname}/preload.js`),
         },  
     })
     
-    win.loadFile('index.html')
+
+    win.loadFile(path.join(__dirname, 'index.html'))
 }
 
+
+// function newStore(name, schema) {
+//     name = new ElectronStore(schema)
+//     win.webContents.send("fromMain", responseObj)
+// }
 app.whenReady().then(() => {
     createWindow()
-
+    // ipcMain.on('store', newStore)
     app.on('activate', ()=>{
         if(BrowserWindow.getAllWindows().length === 0) createWindow()
     })
