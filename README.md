@@ -1,2 +1,2 @@
 # Notes
-My first project :D
+A simple application to write down your notes
