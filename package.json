@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "@electron-forge/maker-rpm": "^6.0.0-beta.65",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.65",
     "@electron-forge/maker-zip": "^6.0.0-beta.65",
+    "@electron-forge/publisher-github": "^6.0.0-beta.65",
     "electron": "^20.0.1"
   },
   "dependencies": {
@@ -55,7 +57,23 @@
           "name": "@electron-forge/maker-rpm",
           "config": {}
         }
+
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "9Horse7",
+              "name": "notes"
+            },
+            "prerelease": false,
+            "draft": true
+          }
+        }
       ]
+
+      
     }
   }
 }
